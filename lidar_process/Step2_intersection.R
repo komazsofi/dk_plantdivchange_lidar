@@ -7,7 +7,7 @@ setwd("O:/Nat_Sustain-proj/_user/ZsofiaKoma_au700510/PlantDivChange_lidar/data/l
 # read in lidar metrics
 
 filelist=list.files(pattern = "*.tif")
-lidar_metrics=stack(raster_list)
+lidar_metrics=stack(filelist)
 
 # read in the plot database
 
