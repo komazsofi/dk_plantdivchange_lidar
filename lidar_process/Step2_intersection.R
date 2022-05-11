@@ -12,7 +12,7 @@ lidar_metrics=stack(filelist)
 # read in the plot database
 
 plot_db=readOGR(dsn="O:/Nat_Sustain-proj/_user/ZsofiaKoma_au700510/PlantDivChange_lidar/processing/field/data_dhm2007_richness_gr_shp.shp")
-plot_db_sel=plot_db@data[is.na(plot_db@data$HabGroup)==FALSE,]
+plot_db_sel=plot_db[is.na(plot_db@data$HabGroup)==FALSE,]
 
 # intersect
 
