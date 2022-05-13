@@ -25,7 +25,7 @@ set.seed(1234)
 #natdry
 
 trControl <- trainControl(method = "cv",
-                          number = 10,
+                          number = 100,
                           search = "grid")
 
 rf_natdry <- train(SpRichness~ .,
@@ -40,7 +40,7 @@ varImp(rf_natdry)
 #natwet
 
 trControl <- trainControl(method = "cv",
-                          number = 10,
+                          number = 100,
                           search = "grid")
 
 rf_natwet <- train(SpRichness ~ .,
@@ -55,7 +55,7 @@ varImp(rf_natwet)
 #forest
 
 trControl <- trainControl(method = "cv",
-                          number = 10,
+                          number = 100,
                           search = "grid")
 
 rf_natforest <- train(SpRichness ~ .,
