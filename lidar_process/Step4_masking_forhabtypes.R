@@ -14,24 +14,20 @@ filelist=list.files(pattern = "*.tif")
 
 # adjust extents
 
-onemetric=rast(filelist[1])
+metrics=rast(filelist)
 
-e <- ext(onemetric)
+e <- ext(metrics)
 forest_crop <- crop(forest, e)
 naturedry_crop <- crop(naturedry, e)
 naturewet_crop <- crop(naturewet, e)
 
 # masking one by one
 
-for (i in filelist) {
+for (i in 1:length(filelist)) {
   print(i)
   
-  metric=rast(i)
-  
-  setwd(paste0(workingdirectory,"/","masked","/"))
-  
-  mask(metric, forest, maskvalues=0, updatevalue=NA, filename=paste0(str_sub(i,1,nchar(i)-4),"_forestmask.tif"))
-  mask(metric, naturedry, maskvalues=0, updatevalue=NA, filename=paste0(str_sub(i,1,nchar(i)-4),"_natdrymask.tif"))
-  mask(metric, naturewet, maskvalues=0, updatevalue=NA, filename=paste0(str_sub(i,1,nchar(i)-4),"_natwetmask.tif"))
+  mask(metrics[[i]], forest_crop, maskvalues=0, updatevalue=NA, filename=paste0(workingdirectory,"/","masked","/",str_sub(filelist[i],1,nchar(filelist[i])-4),"_forestmask.tif"))
+  mask(metrics[[i]], naturedry_crop, maskvalues=0, updatevalue=NA, filename=paste0(workingdirectory,"/","masked","/",str_sub(filelist[i],1,nchar(filelist[i])-4),"_natdrymask.tif"))
+  mask(metrics[[i]], naturewet_crop, maskvalues=0, updatevalue=NA, filename=paste0(workingdirectory,"/","masked","/",str_sub(filelist[i],1,nchar(filelist[i])-4),"_natwetmask.tif"))
   
 }
