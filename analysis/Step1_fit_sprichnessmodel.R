@@ -71,7 +71,7 @@ varImp(rf_natforest)
 
 setwd("O:/Nat_Sustain-proj/_user/ZsofiaKoma_au700510/PlantDivChange_lidar/processing/")
 
-saveRDS(rf_natdry,"rf_natdry_2007.rds")
-saveRDS(rf_natwet,"rf_natwet_2007.rds")
-saveRDS(rf_natforest,"rf_natforest_2007.rds")
+saveRDS(rf_natdry,"rf_natdry_2007_cv100.rds")
+saveRDS(rf_natwet,"rf_natwet_2007_cv100.rds")
+saveRDS(rf_natforest,"rf_natforest_2007_cv100.rds")
 
