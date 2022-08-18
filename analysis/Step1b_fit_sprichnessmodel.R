@@ -25,11 +25,12 @@ natureforest_omit_sel_2015=natureforest_omit[,c(18,30:38)]
 # RF
 set.seed(1234)
 
-#natdry
-
 trControl <- trainControl(method = "cv",
                           number = 100,
-                          search = "grid")
+                          search = "grid",
+                          p=75)
+
+#natdry
 
 rf_natdry_2007 <- train(SpRchnss_x~ .,
                    data = naturedry_omit_sel_2007,
@@ -91,8 +92,12 @@ varImp(rf_natforest_2015)
 
 # export rf objects
 
-setwd("O:/Nat_Sustain-proj/_user/ZsofiaKoma_au700510/PlantDivChange_lidar/processing/")
+setwd("O:/Nat_Sustain-proj/_user/ZsofiaKoma_au700510/PlantDivChange_lidar/processing_082022/")
 
-saveRDS(rf_natdry,"rf_natdry_2007_cv100.rds")
-saveRDS(rf_natwet,"rf_natwet_2007_cv100.rds")
-saveRDS(rf_natforest,"rf_natforest_2007_cv100.rds")
+saveRDS(rf_natdry_2007,"rf_natdry_2007_cv100.rds")
+saveRDS(rf_natwet_2007,"rf_natwet_2007_cv100.rds")
+saveRDS(rf_natforest_2007,"rf_natforest_2007_cv100.rds")
+
+saveRDS(rf_natdry_2015,"rf_natdry_2015_cv100.rds")
+saveRDS(rf_natwet_2015,"rf_natwet_2015_cv100.rds")
+saveRDS(rf_natforest_2015,"rf_natforest_2015_cv100.rds")
