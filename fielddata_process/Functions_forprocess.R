@@ -23,8 +23,8 @@ habitatgrouping=function(data_plot_forshp_biow_df) {
 
 convert_to_shp=function(data_plot_forshp) {
   
-  data_plot_forshp$UTM_X=data_plot_forshp$UTM_X_orig
-  data_plot_forshp$UTM_Y=data_plot_forshp$UTM_Y_orig
+  data_plot_forshp$UTM_X=data_plot_forshp$UTM_X_orig.x
+  data_plot_forshp$UTM_Y=data_plot_forshp$UTM_Y_orig.x
   
   coordinates(data_plot_forshp)=~UTM_X+UTM_Y
   proj4string(data_plot_forshp)<- CRS("+proj=utm +zone=32 +ellps=intl +towgs84=-87,-98,-121,0,0,0,0 +units=m +no_defs ")
