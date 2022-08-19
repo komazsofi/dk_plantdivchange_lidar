@@ -55,7 +55,7 @@ set.seed(1234)
 
 trControl <- trainControl(method = "repeatedcv",
                           number = 10,
-                          repeats=5,
+                          repeats=10,
                           search = "grid",
                           p=0.75)
 
@@ -101,8 +101,8 @@ varImp(rf_natwet_2015)
 
 #forest
 
-rf_natforest_2007 <- train(as.double(SpRchnss_x)~ .,
-                        data = natureforest_omit_sel_2007_train,
+rf_natforest_2007 <- train(SpRchnss_x~ .,
+                        data = natureforest_omit_sel_2007,
                         method = "rf",
                         trControl = trControl,
                         importance=T)
@@ -110,14 +110,8 @@ rf_natforest_2007 <- train(as.double(SpRchnss_x)~ .,
 print(rf_natforest_2007)
 varImp(rf_natforest_2007)
 
-actual <- natureforest_omit_sel_2007_test$SpRchnss_x
-predicted <- unname(predict(rf_natforest_2007, natureforest_omit_sel_2007_test[-1]))
-R2 <- 1 - (sum((actual-predicted)^2)/sum((actual-mean(actual))^2))
-print(R2)
-print(RMSE(predicted,actual))
-
 rf_natforest_2015 <- train(SpRchnss_y~ .,
-                        data = natureforest_omit_sel_2015_train,
+                        data = natureforest_omit_sel_2015,
                         method = "rf",
                         trControl = trControl,
                         importance=T)
@@ -129,10 +123,10 @@ varImp(rf_natforest_2015)
 
 setwd("O:/Nat_Sustain-proj/_user/ZsofiaKoma_au700510/PlantDivChange_lidar/processing_082022/")
 
-saveRDS(rf_natdry_2007,"rf_natdry_2007_cv100.rds")
-saveRDS(rf_natwet_2007,"rf_natwet_2007_cv100.rds")
-saveRDS(rf_natforest_2007,"rf_natforest_2007_cv100.rds")
+saveRDS(rf_natdry_2007,"rf_natdry_2007_rep10cv10.rds")
+saveRDS(rf_natwet_2007,"rf_natwet_2007_rep10cv10.rds")
+saveRDS(rf_natforest_2007,"rf_natforest_2007_rep10cv10.rds")
 
-saveRDS(rf_natdry_2015,"rf_natdry_2015_cv100.rds")
-saveRDS(rf_natwet_2015,"rf_natwet_2015_cv100.rds")
-saveRDS(rf_natforest_2015,"rf_natforest_2015_cv100.rds")
+saveRDS(rf_natdry_2015,"rf_natdry_2015_rep10cv10.rds")
+saveRDS(rf_natwet_2015,"rf_natwet_2015_rep10cv10.rds")
+saveRDS(rf_natforest_2015,"rf_natforest_2015_rep10cv10.rds")
