@@ -2,7 +2,7 @@ library(randomForest)
 library(caret)
 library(e1071)
 
-intersected=read.csv("O:/Nat_Sustain-proj/_user/ZsofiaKoma_au700510/PlantDivChange_lidar/processing_082022/plt_db_wlidar_both.csv")
+intersected=read.csv("O:/Nat_Sustain-proj/_user/ZsofiaKoma_au700510/PlantDivChange_lidar/processing_082022/plt_db_wlidar_both_v2.csv")
 
 naturedry=intersected[intersected$HbGrp_x=="Nature dry",]
 naturedry_omit <- na.omit(naturedry) 
@@ -25,10 +25,11 @@ natureforest_omit_sel_2015=natureforest_omit[,c(18,30:38)]
 # RF
 set.seed(1234)
 
-trControl <- trainControl(method = "cv",
-                          number = 100,
+trControl <- trainControl(method = "repeatedcv",
+                          number = 10,
+                          repeats=5,
                           search = "grid",
-                          p=75)
+                          p=0.75)
 
 #natdry
 

@@ -3,7 +3,7 @@ library(tidyverse)
 
 library(raster)
 
-source("O:/Nat_Sustain-proj/_user/ZsofiaKoma_au700510/PlantDivChange_Berlin/_code/dk_plantdivchange_lidar/fielddata_process/Functions_forprocess.R")
+source("O:/Nat_Sustain-proj/_user/ZsofiaKoma_au700510/PlantDivChange_lidar/__code/dk_plantdivchange_lidar/fielddata_process/Functions_forprocess.R")
 
 ### Input
 
@@ -11,7 +11,7 @@ data<-as.data.frame(fread("O:/Nat_Sustain-proj/_user/ZsofiaKoma_au700510/PlantDi
 
 ## reorganize data
 
-data_dhm=data[(data$Yeare==2006 | data$Yeare==2007 | data$Yeare==2014 | data$Yeare==2015),]
+data_dhm=data[(data$Yeare==2005 | data$Yeare==2006 | data$Yeare==2007 | data$Yeare==2008 | data$Yeare==2013 | data$Yeare==2014 | data$Yeare==2015 | data$Yeare==2016),]
 data_dhm_sel=data_dhm[is.na(data_dhm$Plot5mID)==FALSE,]
 
 data_dhm_richness=data_dhm_sel %>% 
@@ -30,10 +30,10 @@ data_dhm_richness_gr_enh=data_dhm_richness_gr_enh[data_dhm_richness_gr_enh$nofpl
 
 # separate into two years if it was measured more than once
 
-data_dhm_richness_gr_enh_2007=data_dhm_richness_gr_enh[(data_dhm_richness_gr_enh$Yeare==2006 | data_dhm_richness_gr_enh$Yeare==2007),]
+data_dhm_richness_gr_enh_2007=data_dhm_richness_gr_enh[(data_dhm_richness_gr_enh$Yeare==2005 | data_dhm_richness_gr_enh$Yeare==2006 | data_dhm_richness_gr_enh$Yeare==2007 | data_dhm_richness_gr_enh$Yeare==2008),]
 data_dhm_richness_gr_enh_2007_nodupl = data_dhm_richness_gr_enh_2007[!duplicated(data_dhm_richness_gr_enh_2007$coordID),]
 
-data_dhm_richness_gr_enh_2015=data_dhm_richness_gr_enh[(data_dhm_richness_gr_enh$Yeare==2014 | data_dhm_richness_gr_enh$Yeare==2015),]
+data_dhm_richness_gr_enh_2015=data_dhm_richness_gr_enh[(data_dhm_richness_gr_enh$Yeare==2013 | data_dhm_richness_gr_enh$Yeare==2014 | data_dhm_richness_gr_enh$Yeare==2015 | data_dhm_richness_gr_enh$Yeare==2016),]
 data_dhm_richness_gr_enh_2015_nodupl = data_dhm_richness_gr_enh_2015[!duplicated(data_dhm_richness_gr_enh_2015$coordID),]
 
 data_fortraining=merge(data_dhm_richness_gr_enh_2015_nodupl,data_dhm_richness_gr_enh_2007_nodupl,by="coordID")
@@ -48,4 +48,4 @@ nofsampleperaggrhabitat=data_fortraining %>%
 
 data_fortraining_shp=convert_to_shp(data_fortraining)
 
-shapefile(data_fortraining_shp,"O:/Nat_Sustain-proj/_user/ZsofiaKoma_au700510/PlantDivChange_lidar/processing_082022/corresponded_training.shp",overwrite=TRUE)
+shapefile(data_fortraining_shp,"O:/Nat_Sustain-proj/_user/ZsofiaKoma_au700510/PlantDivChange_lidar/processing_082022/corresponded_training_v2.shp",overwrite=TRUE)
