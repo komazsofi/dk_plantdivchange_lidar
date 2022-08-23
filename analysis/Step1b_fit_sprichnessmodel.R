@@ -5,7 +5,9 @@ library(e1071)
 intersected=read.csv("O:/Nat_Sustain-proj/_user/ZsofiaKoma_au700510/PlantDivChange_lidar/processing_082022/plt_db_wlidar_both_v2.csv")
 
 naturedry=intersected[intersected$HbGrp_x=="Nature dry",]
-naturedry_omit <- na.omit(naturedry) 
+naturedry_omit_1 <- na.omit(naturedry) 
+
+naturedry_omit=naturedry_omit_1[naturedry_omit_1$HbttID_x==naturedry_omit_1$HbttID_y,]
 
 trainIndex_natdry <- createDataPartition(naturedry_omit$SpRchnss_x, p = .75, 
                                   list = FALSE, 
@@ -20,7 +22,9 @@ naturedry_omit_sel_2015_train <- naturedry_omit_sel_2015[ trainIndex_natdry,]
 naturedry_omit_sel_2015_test  <- naturedry_omit_sel_2015[-trainIndex_natdry,]
 
 naturewet=intersected[intersected$HbGrp_x=="Nature wet",]
-naturewet_omit <- na.omit(naturewet)
+naturewet_omit_1 <- na.omit(naturewet)
+
+naturewet_omit=naturewet_omit_1[naturewet_omit_1$HbttID_x==naturewet_omit_1$HbttID_y,]
 
 trainIndex_natwet <- createDataPartition(naturewet_omit$SpRchnss_x, p = .75, 
                                          list = FALSE, 
@@ -35,7 +39,9 @@ naturewet_omit_sel_2015_train <- naturewet_omit_sel_2015[ trainIndex_natwet,]
 naturewet_omit_sel_2015_test  <- naturewet_omit_sel_2015[-trainIndex_natwet,]
 
 natureforest=intersected[intersected$HbGrp_x=="Forest",]
-natureforest_omit <- na.omit(natureforest) 
+natureforest_omit_1 <- na.omit(natureforest) 
+
+natureforest_omit=natureforest_omit_1[natureforest_omit_1$HbttID_x==natureforest_omit_1$HbttID_y,]
 
 trainIndex_forest <- createDataPartition(natureforest_omit$SpRchnss_x, p = .75, 
                                          list = FALSE, 
