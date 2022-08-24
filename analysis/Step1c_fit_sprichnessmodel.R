@@ -130,10 +130,25 @@ varImp(rf_natforest_2015)
 
 setwd("O:/Nat_Sustain-proj/_user/ZsofiaKoma_au700510/PlantDivChange_lidar/processing_082022/")
 
-saveRDS(rf_natdry_2007,"rf_natdry_2007_rep10cv10_230822.rds")
-saveRDS(rf_natwet_2007,"rf_natwet_2007_rep10cv10_230822.rds")
-saveRDS(rf_natforest_2007,"rf_natforest15m_2007_rep10cv10_230822.rds")
+saveRDS(rf_natdry_2007,"rf_natdry_2007_rep10cv10_240822_wtrain.rds")
+saveRDS(rf_natwet_2007,"rf_natwet_2007_rep10cv10_240822_wtrain.rds")
+saveRDS(rf_natforest_2007,"rf_natforest_2007_rep10cv10_240822_wtrain_15m.rds")
 
-saveRDS(rf_natdry_2015,"rf_natdry_2015_rep10cv10_230822.rds")
-saveRDS(rf_natwet_2015,"rf_natwet_2015_rep10cv10_230822.rds")
-saveRDS(rf_natforest_2015,"rf_natforest15m_2015_rep10cv10_230822.rds")
+saveRDS(rf_natdry_2015,"rf_natdry_2015_rep10cv10_240822_wtrain.rds")
+saveRDS(rf_natwet_2015,"rf_natwet_2015_rep10cv10_240822_wtrain.rds")
+saveRDS(rf_natforest_2015,"rf_natforest_2015_rep10cv10_240822_wtrain_15m.rds")
+
+write.csv(naturedry_omit_sel_2007_train,"naturedry_omit_sel_2007_train.csv")
+write.csv(naturedry_omit_sel_2015_train,"naturedry_omit_sel_2015_train.csv")
+write.csv(naturedry_omit_sel_2007_test,"naturedry_omit_sel_2007_test.csv")
+write.csv(naturedry_omit_sel_2015_test,"naturedry_omit_sel_2015_test.csv")
+
+write.csv(naturewet_omit_sel_2007_train,"naturewet_omit_sel_2007_train.csv")
+write.csv(naturewet_omit_sel_2015_train,"naturewet_omit_sel_2015_train.csv")
+write.csv(naturewet_omit_sel_2007_test,"naturewet_omit_sel_2007_test.csv")
+write.csv(naturewet_omit_sel_2015_test,"naturewet_omit_sel_2015_test.csv")
+
+write.csv(natureforest_omit_sel_2007_train,"natureforest_omit_sel_2007_train.csv")
+write.csv(natureforest_omit_sel_2015_train,"natureforest_omit_sel_2015_train.csv")
+write.csv(natureforest_omit_sel_2007_test,"natureforest_omit_sel_2007_test.csv")
+write.csv(natureforest_omit_sel_2015_test,"natureforest_omit_sel_2015_test.csv")
