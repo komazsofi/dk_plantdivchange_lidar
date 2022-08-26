@@ -12,14 +12,18 @@ setwd("O:/Nat_Sustain-proj/_user/ZsofiaKoma_au700510/PlantDivChange_lidar/proces
 
 ## Import data
 
-#rf_natdry_2007=readRDS("rf_natdry_2007_rep10cv10_230822.rds")
-#rf_natdry_2015=readRDS("rf_natdry_2015_rep10cv10_230822.rds")
+#rf_natdry_2007=readRDS("rf_natdry_2007_rep10cv10_240822_wtrain_v3.rds")
+#rf_natdry_2015=readRDS("rf_natdry_2015_rep10cv10_240822_wtrain_v3.rds")
 
-#rf_natdry_2007=readRDS("rf_natwet_2007_rep10cv10_230822.rds")
-#rf_natdry_2015=readRDS("rf_natwet_2015_rep10cv10_230822.rds")
+#rf_natdry_2007=readRDS("rf_natwet_2007_rep10cv10_240822_wtrain_v3.rds")
+#rf_natdry_2015=readRDS("rf_natwet_2015_rep10cv10_240822_wtrain_v3.rds")
 
-rf_natdry_2007=readRDS("rf_natforest15m_2007_rep10cv10_230822.rds")
-rf_natdry_2015=readRDS("rf_natforest15m_2015_rep10cv10_230822.rds")
+rf_natdry_2007=readRDS("rf_natforest_2007_rep10cv10_240822_wtrain_15m_v3.rds")
+rf_natdry_2015=readRDS("rf_natforest_2015_rep10cv10_240822_wtrain_15m_v3.rds")
+
+rf_natdry_2007=readRDS("rf_natdry_ch_rep10cv10_240822_wtrain_v2.rds")
+rf_natdry_2007=readRDS("rf_natwet_ch_rep10cv10_240822_wtrain_v2.rds")
+rf_natdry_2007=readRDS("rf_natforest_ch_rep10cv10_240822_wtrain_15m_v2.rds")
 
 # reorganize feature importance
 
@@ -47,7 +51,7 @@ p1=ggplot(feaimp_natdry_df_sort_2007, aes(x=metrics, y=meanImp, color=as.factor(
   geom_segment(aes(x=metrics,xend=metrics,y=0,yend=meanImp),size=3,show.legend = FALSE) +
   ylab("%IncMSE") +
   xlab("Metrics") +
-  ylim(c(0,100))+
+  ylim(c(0,15))+
   coord_flip()+
   theme_bw(base_size = 30)+
   ggtitle("2006/2007")+
